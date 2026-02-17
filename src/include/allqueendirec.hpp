@@ -6,7 +6,7 @@
 #include "outputarr.hpp"
 #include <wx/wx.h>
 using namespace std;
-
+#define VIEW_SPEED 729
 bool diagonal_valid(const int_arr &checked_arr);
 
 void allpossibility(int_arr& allpos,vector<int_arr>&allpermute,int& jumlah_kasus);
