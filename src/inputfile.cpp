@@ -26,7 +26,7 @@ vector<string> create_str_map_from_file(const string& filename) {
 pair<Shape_Arr, vector<string>> load_from_png(const string& path) {
     Mat img = imread(path);
     Shape_Arr shapes;
-    vector<string> dummy_board(9, string(9, '.')); // Template kosong 9x9
+    vector<string> dummy_board(9, string(9, '.')); 
     
     if (img.empty()) return {shapes, dummy_board};
 
@@ -36,7 +36,6 @@ pair<Shape_Arr, vector<string>> load_from_png(const string& path) {
 
     for (int y = 0; y < 9; y++) {
         for (int x = 0; x < 9; x++) {
-            // Ambil warna tepat di tengah cell supaya akurat
             Vec3b p = img.at<Vec3b>(y * cellH + cellH/2, x * cellW + cellW/2);
             string colorKey = to_string(p[0]) + "," + to_string(p[1]) + "," + to_string(p[2]);
 
