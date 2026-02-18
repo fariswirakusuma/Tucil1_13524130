@@ -1,5 +1,6 @@
 bin/*
 !bin/.gitkeep
+!bin/app
 build/
 *.exe
 *.out

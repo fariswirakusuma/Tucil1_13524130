@@ -1,8 +1,6 @@
 #include "outputarr.hpp"
 using namespace std;
 using namespace cv;
-
-// --- 1. Fungsi Warna ---
 Scalar getShapeColor(char ch) {
     static map<char, Scalar> colorMap = {
         {'A', Scalar(150, 200, 255)}, {'B', Scalar(150, 255, 150)}, 
@@ -13,8 +11,6 @@ Scalar getShapeColor(char ch) {
     if (colorMap.count(ch)) return colorMap[ch];
     return Scalar(240, 240, 240); 
 }
-
-// --- 2. Konversi Mat ke wxImage ---
 wxImage MatToWxImage(Mat& mat) {
     if (mat.empty()) return wxImage();
     Mat rgb;
@@ -24,8 +20,6 @@ wxImage MatToWxImage(Mat& mat) {
     memcpy(data, rgb.data, rgb.rows * rgb.cols * 3);
     return wxImage(rgb.cols, rgb.rows, data, false);
 }
-
-// --- 3. Logika Penanda Queen ---
 vector<string> output_str(const vector<int>& pos, const vector<string>& initboard) {
     vector<string> result = initboard;
     for (int r = 0; r < (int)pos.size(); r++) {
@@ -36,8 +30,6 @@ vector<string> output_str(const vector<int>& pos, const vector<string>& initboar
     }
     return result;
 }
-
-// --- 4. Render Mat (Anti-Crash) ---
 Mat renderToMat(const vector<string>& vstr, const vector<string>& initboard) {
     if (vstr.empty()) return Mat();
     int n = vstr.size();

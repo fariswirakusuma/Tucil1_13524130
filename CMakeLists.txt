@@ -27,8 +27,6 @@ set(SOURCES
 )
 
 add_executable(app ${SOURCES})
-
-# Kadang perlu link tambahan untuk multithreading yang diminta wxWidgets
 target_link_libraries(app 
     ${wxWidgets_LIBRARIES} 
     ${OpenCV_LIBS}
