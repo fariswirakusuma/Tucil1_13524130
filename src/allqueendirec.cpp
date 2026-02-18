@@ -1,6 +1,5 @@
 
 #include "allqueendirec.hpp"
-
 using namespace std;
 
 bool diagonal_valid(const int_arr &checked_arr){
@@ -23,12 +22,23 @@ void update_position(wxStaticText* label, const std::vector<int>& allpos, const 
         wxSafeYield();
     }
 }
-bool find_solution(Shape_Arr allshape, int_arr& allpos, std::vector<int_arr>& allpermute, int& jumlah_kasus, int_arr& valid_array, wxStaticText* output_label, std::vector<std::string> initboard){
+bool find_solution(Shape_Arr allshape, int_arr& allpos, std::vector<int_arr>& allpermute, int& jumlah_kasus, int_arr& valid_array, wxStaticText* output_label, std::vector<std::string> initboard, QueenFrame* frame){
     
-    allpos.assign(9, 0); // Inisialisasi ukuran array
+    allpos.assign(9, 0);
     allpermute.clear();
     jumlah_kasus = 0;
+    auto update_ui_visual = [&](const int_arr& current_pos) {
+        update_position(output_label, current_pos, initboard, jumlah_kasus);
+        std::vector<std::string> temp_board = output_str(current_pos, initboard);
+        renderToImage(temp_board, initboard, "temp_view.png");
 
+        wxImage img(wxString::FromUTF8("test/temp_view.png"), wxBITMAP_TYPE_PNG);
+        if (img.IsOk() && frame && frame->m_bitmapDisplay) {
+            frame->m_bitmapDisplay->SetBitmap(wxBitmap(img));
+            frame->Update(); 
+            wxYield(); 
+        }
+    };
     for (int b1=0;b1<9;b1++){
         allpos[0]=b1;
         for (int b2=0;b2<9;b2++){
@@ -70,19 +80,14 @@ bool find_solution(Shape_Arr allshape, int_arr& allpos, std::vector<int_arr>& al
                                         allpos[8]=b9;
                                         jumlah_kasus++;
                                         if(jumlah_kasus % VIEW_SPEED == 0) update_position(output_label,allpos,initboard,jumlah_kasus);
-                                        // Cek b9 terhadap semua indeks sebelumnya
                                         if (b9 == b1 || b9 == b2 || b9 == b3 || b9 == b4 || b9 == b5 || b9 == b6 || b9 == b7 || b9 == b8) continue;
-
                                         if (diagonal_valid(allpos)) {
-                                            allpermute.push_back(allpos);
-                                            
-                                            for (int i=0;i<(int)allshape.size();i++) {
-                                                allshape[i].isvalid = false;
-                                            }
-                                            for (int y=0;y<9;y++) {
+                                            for (int i=0; i < (int)allshape.size(); i++) allshape[i].isvalid = false;
+
+                                            for (int y = 0; y < 9; y++) {
                                                 int x = allpos[y];
-                                                for (int i=0;i<(int)allshape.size();i++) {
-                                                    for (const auto& p:allshape[i].point) {
+                                                for (int i = 0; i < (int)allshape.size(); i++) {
+                                                    for (const auto& p : allshape[i].point) {
                                                         if (p.x == x && p.y == y) {
                                                             allshape[i].isvalid = true;
                                                             break;
@@ -90,17 +95,17 @@ bool find_solution(Shape_Arr allshape, int_arr& allpos, std::vector<int_arr>& al
                                                     }
                                                 }
                                             }
-                                            bool ok = true;
-                                            for (const Shape& s:allshape) {
+                                            bool semua_daerah_ada_ratu = true;
+                                            for (const auto& s : allshape) {
                                                 if (!s.isvalid) {
-                                                    ok = false;
+                                                    semua_daerah_ada_ratu = false;
                                                     break;
                                                 }
                                             }
 
-                                            if (ok) {
+                                            if (semua_daerah_ada_ratu) {
                                                 valid_array = allpos;
-                                                update_position(output_label,allpos,initboard,jumlah_kasus);
+                                                update_position(output_label, allpos, initboard, jumlah_kasus);
                                                 return true;
                                             }
                                         }

@@ -1,2 +1,11 @@
-*.o
+bin/*
+!bin/.gitkeep
+build/
+*.exe
+*.out
+*.app
+
+solusi.png
+temp_view.png
+
 .vscode/
