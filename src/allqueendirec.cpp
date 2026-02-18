@@ -54,7 +54,7 @@ bool find_solution(Shape_Arr allshape, int_arr& allpos, vector<int_arr>& allperm
             frame->m_bitmapDisplay->SetBitmap(wxBitmap(img));
             frame->Update(); 
             wxYield(); 
-        }
+        }   
     };
     for (int b1=0; b1<9; b1++) {
         allpos[0] = b1;
