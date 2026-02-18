@@ -18,10 +18,11 @@ program yang di buat merupakan game queen dari tucil 1,terdapat file exe di dala
 
 # Cara Kompile program :
 <ul>
-    <li>Step 1 : <code>cmake.. </code>
-    <li>Step 2 : <code>cd build</code>
-    <li>Step 3 : <code>make</code>
-    <li>Step 4 : <code>../bin/app</code>
+    <li>Step 1 : <code>mkdir build </code>
+    <li>Step 2 : <code>cmake.. </code>
+    <li>Step 3 : <code>cd build</code>
+    <li>Step 4 : <code>make</code>
+    <li>Step 5 : <code>../bin/app</code>
 </ul>
 
 # Cara Menjalankan program :
