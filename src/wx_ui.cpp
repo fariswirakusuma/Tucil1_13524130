@@ -26,10 +26,9 @@ QueenFrame::QueenFrame() : wxFrame(nullptr, wxID_ANY, "Queen LinkedIn Solver", w
     m_bitmapDisplay = new wxStaticBitmap(panel, wxID_ANY, wxNullBitmap, wxDefaultPosition, wxSize(450, 450));
     
     wxStaticText* output = new wxStaticText(panel, wxID_ANY, "Ready", wxDefaultPosition, wxDefaultSize, wxALIGN_CENTER);
-    // Font teletype sangat penting agar huruf A, B, Q sejajar sempurna
     output->SetFont(wxFont(10, wxFONTFAMILY_TELETYPE, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL));
 
-    wxButton* btnCari = new wxButton(panel, wxID_ANY, "Pilih File & Cari Solusi");
+    wxButton* btnCari = new wxButton(panel, wxID_ANY, "Pilih File Dan Cari Solusi");
     wxButton* btnSimpan = new wxButton(panel, wxID_ANY, "Simpan Hasil (.png)");
     btnSimpan->Enable(false); 
 

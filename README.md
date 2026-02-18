@@ -8,10 +8,10 @@ program yang di buat merupakan game queen dari tucil 1,terdapat file exe di dala
 
 # Requirement :
 <ul>
-    <li> OpenCV C++ lib : <code>sudo apt install libopencv-dev</code></li>
-    <li> C++ : <code>sudo apt install build-essential</code></li>
-    <li> wxWidgets: <code>sudo apt install libwxgtk3.2-dev</code></li>
-    <li> CMake : <code>sudo apt install cmake </code>
+    <li> OpenCV C++ lib : <code>sudo apt install libopencv-dev</code></li>(linux)
+    <li> C++ : <code>sudo apt install build-essential</code></li>(linux)
+    <li> wxWidgets: <code>sudo apt install libwxgtk3.2-dev</code></li>(linux)
+    <li> CMake : <code>sudo apt install cmake </code>(linux)
 
 
 </ul>
